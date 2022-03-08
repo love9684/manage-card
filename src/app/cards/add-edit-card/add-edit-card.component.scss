@@ -1,0 +1,33 @@
+.cvv-image {
+    position: absolute;
+    top: 0;
+    right: 6px;
+    height: 36px;
+}
+
+.icon {
+    position: absolute;
+    top: -5px;
+    right: 4px;
+    &.visa {
+        &::before {
+            content: url('/assets/svg/icons8-visa.svg');
+        }
+    }
+    &.master {
+        &::before {
+            content: url('/assets/svg/icons8-master.svg');
+        }
+    }
+    &.amex {
+        &::before {
+            content: url('/assets/svg/icons8-amex.svg');
+        }
+    }
+}
+
+.error-msg {
+    &::before {
+        content: '*';
+    }
+}

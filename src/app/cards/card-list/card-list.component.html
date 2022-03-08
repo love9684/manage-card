@@ -1,0 +1,23 @@
+<div class="mt-3">
+
+  <div class="added-card" *ngFor="let card of cards">
+
+    <div class="card me-3">
+      <div>
+        <h6 class="mt-0">Debit Card Number</h6>
+        <span>{{card.number | mask}}</span>
+      </div>
+      <img *ngIf="card.paymentGateway" src="{{svgURL + 'icons8-' + card.paymentGateway + '.svg'}}" alt="">
+    </div>
+    <button type="button" class="btn btn-outline-secondary"(click)="openConfirmationModal(card.id)">Remove</button>
+
+  </div>
+
+  <div class="no-card border" *ngIf="!cards.length">
+    <img src="/assets/png/icons8-credit-card.png" alt="">
+    <h4>You have no saved card!</h4>
+    <h6>Simply add a card by clicking on below button for a speedy checkout.</h6>
+  </div>
+
+</div>
+

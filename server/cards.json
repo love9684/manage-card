@@ -1,0 +1,29 @@
+[
+    {
+        "number": "345660968968986",
+        "expiryMonth": "2",
+        "expiryYear": "2023",
+        "cvv": "1111",
+        "type": "Debit Card",
+        "paymentGateway": "amex",
+        "id": 1
+    },
+    {
+        "number": "4565757838383638",
+        "expiryMonth": "2",
+        "expiryYear": "2024",
+        "cvv": "123",
+        "type": "Debit Card",
+        "paymentGateway": "visa",
+        "id": 2
+    },
+    {
+        "number": "5555555555555555",
+        "expiryMonth": "2",
+        "expiryYear": "2023",
+        "cvv": "111",
+        "type": "Debit Card",
+        "paymentGateway": "master",
+        "id": 3
+    }
+]

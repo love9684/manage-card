@@ -1,0 +1,74 @@
+<div class="modal-header border-bottom-0">
+    <h5 class="modal-title" id="exampleModalLabel">Add New Card</h5>
+    <button type="button" class="btn-close" (click)="bsModalRef.hide()" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="cardDetailsForm">
+        <div class="alert alert-danger" role="alert" [hidden]="!showExpiryMessage">
+            You can't add expiry card!
+        </div>
+        <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Enter Debit / Credit Card Number</label>
+            <div class="position-relative">
+                <input type="text" formControlName="number" class="form-control" id="recipient-name" autocomplete="off"
+                    [minlength]="cardLength" [maxlength]="cardLength" pattern="[0-9]+" required
+                    placeholder="Enter Debit / Credit Card Number">
+                <span class="icon" [ngClass]="f.paymentGateway?.value"></span>
+            </div>
+            <ng-container [ngTemplateOutlet]="errorTemplate" [ngTemplateOutletContext]="{data: f.number}">
+            </ng-container>
+        </div>
+        <div class="row mb-3">
+            <div class="col-6 col-sm-4">
+                <label for="recipient-name" class="col-form-label">Expiry Month</label>
+                <select class="form-select" formControlName="expiryMonth" (change)="onChangeExpiry()">
+                    <option value="" disabled>MM</option>
+                    <option value="1">01</option>
+                    <option value="2">02</option>
+                    <option value="3">03</option>
+                    <option value="4">04</option>
+                    <option value="5">05</option>
+                    <option value="6">06</option>
+                    <option value="7">07</option>
+                    <option value="8">08</option>
+                    <option value="9">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+            </div>
+            <div class="col-6 col-sm-4">
+                <label for="recipient-name" class="col-form-label">Expiry Year</label>
+                <select class="form-select" formControlName="expiryYear" (change)="onChangeExpiry()">
+                    <option value="" disabled>YYYY</option>
+                    <option [value]="year" *ngFor="let year of years">{{year}}</option>
+                </select>
+            </div>
+            <div class="col-6 col-sm-4">
+                <label for="recipient-name" class="col-form-label">CVV</label>
+                <div class="position-relative">
+                    <input type="text" class="form-control" autocomplete="off" formControlName="cvv"
+                        [minlength]="cvvLength" [maxlength]="cvvLength" pattern="[0-9]+" required id="recipient-name"
+                        placeholder="CVV">
+                    <img class="cvv-image"
+                        src="https://img.icons8.com/ios-filled/50/000000/card-verification-value.png" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer border-top-0">
+    <button type="button" class="btn btn-primary" [disabled]="!cardDetailsForm.valid" (click)="addCard()">Add
+        Card</button>
+</div>
+
+
+<ng-template #errorTemplate let-data="data">
+    <div class="error-msg text-danger font-monospace" *ngIf="data.touched && data.invalid">
+        <span *ngIf="data.errors.required">This field is required.</span>
+        <span *ngIf="data.errors.pattern else otherThanPatterErrorTemplate">This field must contain only digits.</span>
+        <ng-template #otherThanPatterErrorTemplate>
+            <span *ngIf="data.errors.minlength">Length must be of {{data.errors.minlength.requiredLength}} digits.</span>
+        </ng-template>
+    </div>
+</ng-template>

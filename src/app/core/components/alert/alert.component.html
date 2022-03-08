@@ -1,0 +1,4 @@
+<div *ngIf="showAlert">
+    <alert [type]="config.type" [dismissible]="config.dismissible" [dismissOnTimeout]="config.timeout"
+        (onClosed)="showAlert = false">{{ config.msg }}</alert>
+</div>

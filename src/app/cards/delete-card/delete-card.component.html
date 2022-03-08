@@ -1,0 +1,10 @@
+<div class="modal-header border-bottom-0">
+    <button type="button" class="btn-close" (click)="bsModalRef.hide()" aria-label="Close"></button>
+</div>
+<div class="modal-body fs-5">
+    Are you sure you want to delete this card?
+</div>
+<div class="modal-footer border-top-0">
+    <button type="button" class="btn btn-primary" (click)="removeCard()">OK</button>
+    <button type="button" class="btn btn-secondary" (click)="bsModalRef.hide()">Cancel</button>
+</div>
